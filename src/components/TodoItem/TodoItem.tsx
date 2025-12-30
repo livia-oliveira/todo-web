@@ -1,23 +1,23 @@
-import { useState } from "react";
 import "./TodoItem.css";
 
 type TodoItemProps = {
-    todo: string;
+    text: string;
+    done: boolean;
+    onToggle: () => void;
 };
 
-function TodoItem({ todo } : TodoItemProps){
-   
-    const [done, setDone] = useState(false);
-        return(
+function TodoItem({ text, done, onToggle } : TodoItemProps){
+
+        return (
                 
-                <div className={`container ${done ? "done" : ""}`}>
-                    <p>{todo}</p>
-                    <input 
+            <div className={`container ${done ? "done" : ""}`}>
+                <p>{text}</p>
+                <input 
                     type="checkbox" 
                     checked = {done}
-                    onChange={() => setDone(!done)}
-                    />
-                </div>
+                    onChange={onToggle}
+                />
+            </div>
         );
 }
 
