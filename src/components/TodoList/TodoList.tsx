@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoItem from "../TodoItem";
+import TodoForm from "../TodoForm";
 
 type Todo = {
     id: number;
@@ -13,6 +14,17 @@ function TodoList(){
         { id: 1, text: "Limpar a casa", done: false},
         { id: 2, text: "Estudar react", done: true},
     ]);
+
+    function addTodo(text: string){
+        setTodos((prevTodos) => [
+            ...prevTodos,
+            {
+                id: Date.now(),
+                text,
+                done: false,
+            },
+        ]);
+    }
 
     function toggleTodo(id: number){
         setTodos((prevTodos) =>
@@ -28,6 +40,8 @@ function TodoList(){
 
     return (
         <div>
+            <TodoForm onAddTodo={addTodo}/>
+
             {todos.map((todo) =>(
                 <TodoItem
                 key={todo.id}
