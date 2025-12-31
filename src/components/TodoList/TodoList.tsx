@@ -36,6 +36,12 @@ function TodoList(){
         );
     }
 
+    function removeTodo(id: number){
+        setTodos(prev =>
+            prev.filter(todo => todo.id !== id)
+        );
+    }
+
 
 
     return (
@@ -48,6 +54,7 @@ function TodoList(){
                 text={todo.text}
                 done={todo.done}
                 onToggle={()=> toggleTodo(todo.id)}
+                onRemove={()=> removeTodo(todo.id)}
                 />
             ))}
         </div>

@@ -4,9 +4,10 @@ type TodoItemProps = {
     text: string;
     done: boolean;
     onToggle: () => void;
+    onRemove: () => void;
 };
 
-function TodoItem({ text, done, onToggle } : TodoItemProps){
+function TodoItem({ text, done, onToggle, onRemove } : TodoItemProps){
 
         return (
                 
@@ -17,6 +18,10 @@ function TodoItem({ text, done, onToggle } : TodoItemProps){
                     checked = {done}
                     onChange={onToggle}
                 />
+
+                <button onClick={onRemove}>
+                    X
+                </button>
             </div>
         );
 }
