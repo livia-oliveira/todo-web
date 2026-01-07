@@ -42,6 +42,15 @@ function TodoList(){
         );
     }
 
+    function editTodo(id: number, newText: string){
+        setTodos(prev =>
+            prev.map(todo =>
+                todo.id === id
+                ? { ...todo, text: newText}
+                :todo
+            )
+        );
+    }
 
 
     return (
@@ -55,6 +64,7 @@ function TodoList(){
                 done={todo.done}
                 onToggle={()=> toggleTodo(todo.id)}
                 onRemove={()=> removeTodo(todo.id)}
+                onEdit={(newText) => editTodo(todo.id, newText)}
                 />
             ))}
         </div>
